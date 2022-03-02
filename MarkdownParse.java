@@ -7,10 +7,12 @@ import java.util.ArrayList;
 public class MarkdownParse {
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
+        int count =0;
         // find the next [, then find the ], then find the (, then take up to
         // the next )
         int links = 0;
         for(int i = 0; i < markdown.length(); i++){
+            count++;
             if(markdown.charAt(i) == ')'){
                 links++;
             }
@@ -32,7 +34,7 @@ public class MarkdownParse {
             System.out.println("openParen " + openParen);
             System.out.println("closeParen " + closeParen);*/
         }
-        
+        System.out.print(count);
         return toReturn;
     }
     public static void main(String[] args) throws IOException {
