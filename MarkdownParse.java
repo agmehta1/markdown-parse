@@ -23,13 +23,12 @@ public class MarkdownParse {
             String[] lineArray = s.split("");
             int firstIndex = 0;
             if(lineArray[0].equals("[") && lineArray[lineArray.length-1].equals(")")){
-                for(int i = lineArray.length -1; i >=0; i--) {
-                    if(lineArray[i].equals("(")){
+                for(int i = lineArray.length -1; i >0; i--) {
+                    if(lineArray[i].equals("(") && lineArray[i-1].equals("]")){
                         firstIndex = i +1;
-                        break;
                     }
                 }
-                toReturn.add(s.substring(s.indexOf("](")+2,lineArray.length-1));
+                toReturn.add(s.substring(firstIndex,s.length()-1));
             }
         }
         return toReturn;
