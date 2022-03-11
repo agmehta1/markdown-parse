@@ -7,25 +7,31 @@ import java.util.ArrayList;
 public class MarkdownParse {
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
-        int currentIndex = 0;
-        while(currentIndex < markdown.length()) {
-            int nextOpenBracket = markdown.indexOf("[", currentIndex);
-            int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
-            int openParen = markdown.indexOf("(", nextCloseBracket);
-            int closeParen = markdown.indexOf(")", openParen);
+    //    int currentIndex = 0;
+    //    while(currentIndex < markdown.length()) {
+    //        int nextOpenBracket = markdown.indexOf("[", currentIndex);
+    //        int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
+    //        int openParen = markdown.indexOf("(", nextCloseBracket);
+    //        int closeParen = markdown.indexOf(")", openParen);
             //if(nextCloseBracket == openParen-1 && nextOpenBracket != nextCloseBracket-1){
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
-            currentIndex = closeParen + 1;
-        }
+    //        toReturn.add(markdown.substring(openParen + 1, closeParen));
+    //        currentIndex = closeParen + 1;
+    //    }
         
         String[] contentsArray = markdown.split("\n");
         for(String s: contentsArray){
             String[] lineArray = s.split("");
+            int firstIndex = 0;
             if(lineArray[0].equals("[") && lineArray[lineArray.length-1].equals(")")){
+                for(int i = lineArray.length -1; i >=0; i--) {
+                    if(lineArray[i].equals("(")){
+                        firstIndex = i +1;
+                        break;
+                    }
+                }
                 toReturn.add(s.substring(s.indexOf("](")+2,lineArray.length-1));
             }
         }
-        //System.out.print(count);
         return toReturn;
     }
 
