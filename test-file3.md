@@ -1,4 +1,4 @@
 # title
-[](][](https://www.parenthesis.com)
+[](][not supposed to print](https://www.icecream.com/)
 
-more text here
+This is just a paragraph but ] it has brackets [
