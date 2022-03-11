@@ -18,7 +18,13 @@ public class MarkdownParse {
             currentIndex = closeParen + 1;
         }
         
-
+        String[] contentsArray = markdown.split("\n");
+        for(String s: contentsArray){
+            String[] lineArray = s.split("");
+            if(lineArray[0].equals("[") && lineArray[lineArray.length-1].equals(")")){
+                toReturn.add(s.substring(s.indexOf("](")+2,lineArray.length-1));
+            }
+        }
         //System.out.print(count);
         return toReturn;
     }
